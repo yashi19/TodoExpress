@@ -1,0 +1,14 @@
+node_modules
+.vscode
+.idea
+.DS_Store
+tmp
+jest
+typings
+.sonar
+stats.json
+npm-debug.log
+
+
+
+

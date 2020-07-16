@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo app</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body>
+    <div id="app">
+        <h2 style="margin-left: 20px">{{appName}}</h2>
+        <div class="form-inline">
+
+            <input type="text" v-model.trim='newtask' class="form-control ">
+            <button v-on:click="addTask" class="btn btn-info">Add Task</button>
+            <button v-on:click="clearTasks" class="btn btn-info">Clear Completed Tasks</button>
+            
+        </div>
+        <div id='error' style="color:red" v-if="error">
+            {{errorMessage}}
+        </div>
+
+
+        <table class="table table-striped" style="width:800px;">
+            <thead>
+                <th>Tasks</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <tr v-for="todo in todos">
+                    <td>
+                        <li>
+                            {{todo.task}}
+                        </li>
+                    </td>
+                    <td>
+                        <input v-model="todo.done" type="checkbox" checked="todo.done" v-on:click="toggleDone" v-bind:id="todo.id" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+
+</html>
